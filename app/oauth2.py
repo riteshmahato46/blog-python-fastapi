@@ -3,7 +3,9 @@ from datetime import datetime, timedelta
 from fastapi import Depends, status, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
-from . import schemas, database, models
+
+from .persistence import database, models
+from . import schemas
 
 # to get a string like this run:
 # openssl rand -hex 32

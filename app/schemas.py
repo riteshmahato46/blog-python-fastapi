@@ -7,11 +7,12 @@ class Post(BaseModel):
     title: str
     content: str
     published: bool = True
+
     
-class PostResponse(BaseModel):
-    title: str
-    content: str
-    published: bool = True
+class PostResponse(Post):
+    created: datetime
+    id: str
+    user_id: int
     
     class Config:
         orm_mode = True
