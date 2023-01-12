@@ -17,3 +17,18 @@ def get_db():
         yield db
     finally:
         db.close()
+        
+        
+# code to connect to db manually without ORM sqlalchemy
+# while True: 
+#    try:
+#        conn = psycopg2.connect(host='localhost', database='fastapi', 
+#                                user='postgres', password='', cursor_factory=RealDictCursor)
+#        cursor = conn.cursor()
+#        print("Connected to DB")
+#        break
+#    except Exception as error:
+#        print("Conenct to DB Failed")
+#        print("Error: ", error)
+#        time.sleep(2)
+    
