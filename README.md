@@ -1,6 +1,10 @@
 # Python REST API (FastAPI)
 Barebones python(3.7) Web service demonstrating how to create REST APIs using FastAPI framework.
 
+### Features
+- User login (Authenticate using JWT)
+- Create/Read/Update/Delete Posts (CRUD)
+- Store data in Postgres Database
 
 ### Frameworks used
 #### FastAPI 
@@ -11,7 +15,7 @@ Models for Request/Response and pydantic auto validation in REST APIs
 
 #### Postgres
 ORM used - **SQLAlchemy**\
-DB driver - ***Psycopg2***
+DB driver - **Psycopg2**
 
 #### Authentication
 User password hash - **bcrypt** hashing using **passlib** library\
@@ -19,7 +23,7 @@ JWT Token  library - [python-jose](https://github.com/mpdavis/python-jose) with 
 
 -------------------------------------------------------------
 
-**Pip freeze**\
+**Python libraries used (pip freeze)**
 - anyio==3.6.2
 - bcrypt==4.0.1
 - cffi==1.15.1
