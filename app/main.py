@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from .persistence import models
 from .persistence.database import engine
 from .routers import post_router, user_router, auth_router
+from .config import settings
 
 models.Base.metadata.create_all(bind=engine)
         
