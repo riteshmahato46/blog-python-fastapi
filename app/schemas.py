@@ -39,3 +39,7 @@ class Token(BaseModel):
     
 class TokenData(BaseModel):
     id: Optional[str] = None
+    
+class Like(BaseModel):
+    post_id: int
+    direction: int  # direction is 1 or 0 (like/unlike)
