@@ -32,7 +32,14 @@ class PostResponse(Post):
     
     class Config:
         orm_mode = True
+   
+class PostLikesResponse(BaseModel):
+    Post: PostResponse
+    likes: int
     
+    class Config:
+        orm_mode = True
+         
 class Token(BaseModel):
     access_token: str
     token_type: str
