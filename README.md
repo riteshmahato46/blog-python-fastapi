@@ -3,49 +3,25 @@ Barebones python(3.7) Web service demonstrating how to create REST APIs using Fa
 
 ### Features
 - User login (Authenticate using JWT)
-- Create/Read/Update/Delete Posts (CRUD)
-- Store data in Postgres Database
+  - Password hashing using [passlib](https://pypi.org/project/passlib/) library and [bcrypt](https://pypi.org/project/bcrypt/) algorithm 
+  - JWT Token library - [python-jose](https://github.com/mpdavis/python-jose) with cryptographic backend [pyca/cryptography](https://cryptography.io/en/latest/)
+  
+- REST API 
+  - Framework used - [FastAPI](https://fastapi.tiangolo.com/)
+  - Create/Read/Update/Delete API for Posts (CRUD)
+  - Request/Response model validation using [pydantic](https://docs.pydantic.dev/)
 
-### Frameworks used
-#### FastAPI 
-GET, POST, PUT, DELETE API examples using @app and @router
-
-#### Pydantic
-Models for Request/Response and pydantic auto validation in REST APIs
-
-#### Postgres
-ORM used - **SQLAlchemy**\
-DB driver - **Psycopg2**
-
-#### Authentication
-User password hash - **bcrypt** hashing using **passlib** library\
-JWT Token  library - [python-jose](https://github.com/mpdavis/python-jose) with cryptographic backend [pyca/cryptography](https://cryptography.io/en/latest/)
+- Database - Postgres
+    - ORM - [SQLAlchemy](https://www.sqlalchemy.org/), DB driver - [Psycopg2](https://pypi.org/project/psycopg2/)
+    - DB Table schemas inside [persistence/models.py](https://github.com/riteshmahato46/blog-python-FastAPI/blob/master/app/persistence/models.py)
 
 -------------------------------------------------------------
 
-**Python libraries used (pip freeze)**
-- anyio==3.6.2
-- bcrypt==4.0.1
-- cffi==1.15.1
-- click==8.1.3
-- cryptography==39.0.0
-- dnspython==2.2.1
-- ecdsa==0.18.0
-- email-validator==1.3.0
-- fastapi==0.89.0
-- greenlet==2.0.1
-- h11==0.14.0
-- idna==3.4
-- passlib==1.7.4
-- psycopg2==2.9.5
-- pyasn1==0.4.8
-- pycparser==2.21
-- pydantic==1.10.4
-- python-jose==3.3.0
-- rsa==4.9
-- six==1.16.0
-- sniffio==1.3.0
-- SQLAlchemy==1.4.46
-- starlette==0.22.0
-- typing_extensions==4.4.0
-- uvicorn==0.20.0
+### How to run
+
+- Start Postgres Server on you local system
+  - Create a database named **fastapi** and owner named **postgres** OR change settings [here](https://github.com/riteshmahato46/blog-python-FastAPI/blob/594656b2358db4d446968f135ecdaac69ee2b87c/app/persistence/database.py#L5) as per your db/owner names
+- Run the web server locally using uvicorn \
+`python -m uvicorn app.main:app --reload`
+- Navigate to `http://127.0.0.1:8000/docs` on your browser to get swagger docs for all APIs and their payloads.
+- The flow is to first create a new user using the *Create User API* and then Login using the *Login API*. This will give you the access token. Execute all other APIs by providing the bearer access token as the header.
