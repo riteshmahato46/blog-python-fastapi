@@ -8,15 +8,6 @@ class Post(BaseModel):
     content: str
     published: bool = True
 
-    
-class PostResponse(Post):
-    created: datetime
-    id: str
-    user_id: int
-    
-    class Config:
-        orm_mode = True
-        
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
@@ -32,6 +23,15 @@ class UserResponse(BaseModel):
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
+     
+class PostResponse(Post):
+    created: datetime
+    id: str
+    user_id: int
+    owner: UserResponse
+    
+    class Config:
+        orm_mode = True
     
 class Token(BaseModel):
     access_token: str
