@@ -8,12 +8,19 @@ Barebones python(3.7) Web service demonstrating how to create REST APIs using Fa
   
 - REST API 
   - Framework used - [FastAPI](https://fastapi.tiangolo.com/)
-  - Create/Read/Update/Delete API for Posts (CRUD)
+  - Create/Read/Update/Delete API for Posts (CRUD).
+  - Pagination support in GET all posts API using `limit` and `offset` from sqlalchemy ORM features\
+  `http://127.0.0.1:8000/posts?limit=5&skip=5`
+  - Search support for post title using query params\
+  `http://127.0.0.1:8000/posts?search=yo`
   - Request/Response model validation using [pydantic](https://docs.pydantic.dev/)
 
 - Database - Postgres
-    - ORM - [SQLAlchemy](https://www.sqlalchemy.org/), DB driver - [Psycopg2](https://pypi.org/project/psycopg2/)
-    - DB Table schemas inside [persistence/models.py](https://github.com/riteshmahato46/blog-python-FastAPI/blob/master/app/persistence/models.py)
+  - ORM - [SQLAlchemy](https://www.sqlalchemy.org/), DB driver - [Psycopg2](https://pypi.org/project/psycopg2/)
+  - DB Table schemas inside [persistence/models.py](https://github.com/riteshmahato46/blog-python-FastAPI/blob/master/app/persistence/models.py)
+
+- Configs (Urls, secrets, db connection strings, environment vars)
+  - All configs are stored in [.env](https://github.com/riteshmahato46/blog-python-fastapi/blob/master/.env) file and read in code using [python-dotenv](https://pypi.org/project/python-dotenv/) pydantic models. In production this file should not be checked in to git to keep passwords and secrets safe
 
 -------------------------------------------------------------
 
