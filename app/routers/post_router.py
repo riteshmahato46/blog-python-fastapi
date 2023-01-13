@@ -11,7 +11,8 @@ router = APIRouter(
 )
 
 @router.get("/", response_model=List[schemas.PostResponse])
-def get_posts(db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
+def get_posts(db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user), 
+              limit: int = 10, skip: int = 0):
     '''
     Summary:
     Gets all the posts from the database.
@@ -22,8 +23,8 @@ def get_posts(db: Session = Depends(get_db), current_user: int = Depends(oauth2.
     Returns:
     List[PostResponse] : A list of PostResponse types
     '''
-
-    posts = db.query(models.Post).all()
+    print(limit)
+    posts = db.query(models.Post).limit(limit).offset(skip).all()
     return posts
 
 
