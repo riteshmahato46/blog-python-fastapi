@@ -13,11 +13,14 @@ Barebones python(3.7) Web service demonstrating how to create REST APIs using Fa
   `http://127.0.0.1:8000/posts?limit=5&skip=5`
   - Search support for post title using query params\
   `http://127.0.0.1:8000/posts?search=yo`
+  - Users can *Like*/*Upvote* posts. Check Swagger doc `http://127.0.0.1:8000/docs` for API.\
+  In the payload JSON `direction` of `1` is *like* and `0` is *unlike*.
   - Request/Response model validation using [pydantic](https://docs.pydantic.dev/)
 
 - Database - Postgres
   - ORM - [SQLAlchemy](https://www.sqlalchemy.org/), DB driver - [Psycopg2](https://pypi.org/project/psycopg2/)
-  - DB Table schemas inside [persistence/models.py](https://github.com/riteshmahato46/blog-python-FastAPI/blob/master/app/persistence/models.py)
+  - DB Table Migration/update implemented using [alembic](https://alembic.sqlalchemy.org/en/latest/). 
+  - DB schemas inside [persistence/models.py](https://github.com/riteshmahato46/blog-python-FastAPI/blob/master/app/persistence/models.py).
 
 - Configs (Urls, secrets, db connection strings, environment vars)
   - All configs are stored in [.env](https://github.com/riteshmahato46/blog-python-fastapi/blob/master/.env) file and read in code using [python-dotenv](https://pypi.org/project/python-dotenv/) pydantic models. In production this file should not be checked in to git to keep passwords and secrets safe
