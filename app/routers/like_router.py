@@ -26,12 +26,12 @@ def like(like: schemas.Like, db: Session = Depends(database.get_db),
     if (like.direction == 1):
         if already_liked_post:
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, 
-                                detail="Post already liked by user")
+                                detail=f"Post with id {like.post_id} already liked by user {current_user.id}")
         
         new_like = models.Like(post_id = like.post_id, user_id = current_user.id)
         db.add(new_like)
         db.commit()
-        return {"message": "Successfully liked"}
+        return {"message": f"Successfully liked post {like.post_id}"}
    
     else:
         if not already_liked_post:
@@ -40,4 +40,4 @@ def like(like: schemas.Like, db: Session = Depends(database.get_db),
         
         already_liked_query.delete(synchronize_session=False)
         db.commit()
-        return {"message": "Successfully deleted like"}
+        return {"message": f"Successfully deleted like for post {like.post_id}"}
