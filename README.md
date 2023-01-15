@@ -1,5 +1,5 @@
 # Python REST API (FastAPI)
-Barebones python(3.7) Web service demonstrating how to create REST APIs using FastAPI framework.
+Python(3.10.8) Web Service that allows user authentication using JWT access tokens and all CRUD operations for data persistence to postgres DB with Docker support and CI/CD pipeline.
 
 ### Features
 - User login (Authenticate using JWT)
