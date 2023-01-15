@@ -1,0 +1,33 @@
+version: '3'
+services:
+    api:
+        build: .
+        depends_on:
+            - postgres
+        ports:
+            - 8000:8000
+        volumes: # Bind mount for binding local file changes to container volume (for quick reload)
+            - ./:/usr/src/app/:ro
+        command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+        #env_file:
+         #   - ./.env
+        environment:
+            - DATABASE_HOSTNAME=postgres
+            - DATABASE_PORT=5432
+            - DATABASE_NAME=fastapi
+            - DATABASE_PASSWORD=
+            - DATABASE_USERNAME=postgres
+            - SECRET_KEY=09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+            - ALGORITHM=HS256
+            - ACCESS_TOKEN_EXPIRE_MINUTES=600
+    postgres:
+        image: postgres
+        environment:
+            - POSTGRES_HOST_AUTH_METHOD=trust # Needed because we kept the password as empty
+            - POSTGRES_PASSWORD=
+            - POSTGRES_DB=fastapi
+        volumes:
+            - postgres-db:/var/lib/postgresql/data
+volumes:
+    postgres-db:
+

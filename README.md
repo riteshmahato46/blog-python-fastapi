@@ -25,6 +25,10 @@ Barebones python(3.7) Web service demonstrating how to create REST APIs using Fa
 - Configs (Urls, secrets, db connection strings, environment vars)
   - All configs are stored in [.env](https://github.com/riteshmahato46/blog-python-fastapi/blob/master/.env) file and read in code using [python-dotenv](https://pypi.org/project/python-dotenv/) pydantic models. In production this file should not be checked in to git to keep passwords and secrets safe
 
+- Docker Suooprt
+  - Docker files for `dev` and `production`. Docker images are currently uploaded to dockerhub `riteshmahato/python-fastapi`. 
+  - To run docker containers, just run `docker-compose -f docker-compose-dev.yml` on your localmachine and you're good to use all APIs.
+
 -------------------------------------------------------------
 
 ### How to run
@@ -38,3 +42,6 @@ Barebones python(3.7) Web service demonstrating how to create REST APIs using Fa
 `python -m uvicorn app.main:app --reload`
 - Navigate to `http://127.0.0.1:8000/docs` on your browser to get swagger docs for all APIs and their payloads.
 - The flow is to first create a new user using the *Create User API* and then Login using the *Login API*. This will give you the access token. Execute all other APIs by providing the bearer access token as the header.
+
+### Alternate way (Docker container)
+- Run `docker-compose -f docker-compose-dev.yml` and use all APIs at `http://127.0.0.1:8000/docs`
