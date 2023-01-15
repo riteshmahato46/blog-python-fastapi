@@ -1,5 +1,5 @@
 # Python REST API (FastAPI)
-Barebones python(3.7) Web service demonstrating how to create REST APIs using FastAPI framework.
+Python(3.10.8) Web Service that allows user authentication using JWT access tokens and all CRUD operations for data persistence to postgres DB with Docker support and CI/CD pipeline.
 
 ### Features
 - User login (Authenticate using JWT)
@@ -25,8 +25,8 @@ Barebones python(3.7) Web service demonstrating how to create REST APIs using Fa
 - Configs (Urls, secrets, db connection strings, environment vars)
   - All configs are stored in [.env](https://github.com/riteshmahato46/blog-python-fastapi/blob/master/.env) file and read in code using [python-dotenv](https://pypi.org/project/python-dotenv/) pydantic models. In production this file should not be checked in to git to keep passwords and secrets safe
 
-- Docker Suooprt
-  - Docker files for `dev` and `production`. Docker images are currently uploaded to dockerhub `riteshmahato/python-fastapi`. 
+- Docker Support
+  - Docker files for `dev` and `production`. Docker images are currently uploaded to dockerhub [riteshmahato/python-fastapi](https://hub.docker.com/r/riteshmahato/python-fastapi/tags#:~:text=TAG-,latest,-docker%20pull%20riteshmahato) repository. 
   - To run docker containers, just run `docker-compose -f docker-compose-dev.yml` on your localmachine and you're good to use all APIs.
 
 -------------------------------------------------------------
