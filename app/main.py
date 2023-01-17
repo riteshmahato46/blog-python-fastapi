@@ -28,5 +28,5 @@ app.include_router(auth_router.router)
 app.include_router(like_router.router)
 
 @app.get("/")
-async def main():
+async def ping():
     return {"Ping": "Ok"}
